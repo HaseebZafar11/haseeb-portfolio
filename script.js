@@ -63,3 +63,25 @@ function toggleMobileMenu() {
     const navMenu = document.querySelector('.nav-menu');
     navMenu.classList.toggle('active');
 }
+
+
+// Results Tab Functionality
+document.querySelectorAll('.tab-button').forEach(button => {
+    button.addEventListener('click', function() {
+        const tabName = this.getAttribute('data-tab');
+        
+        // Remove active class from all buttons and contents
+        document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+        
+        // Add active class to clicked button and corresponding content
+        this.classList.add('active');
+        document.getElementById(tabName).classList.add('active');
+    });
+});
+
+// Observe result cards for animation
+document.querySelectorAll('.result-card').forEach(element => {
+    element.style.opacity = '0';
+    observer.observe(element);
+});
